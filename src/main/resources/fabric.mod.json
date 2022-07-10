@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "anticlickevent",
+  "version": "${version}",
+  "name": "AntiClickEvent",
+  "description": "This mod marks messages with a click event that runs a command.",
+  "authors": [
+    "medisant"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/anticlickevent/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "me.medisant.anticlickevent.client.AntiClickEventClient"
+    ],
+    "main": [
+      "me.medisant.anticlickevent.AntiClickEvent"
+    ]
+  },
+  "mixins": [
+    "anticlickevent.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.13.2",
+    "fabric": "*",
+    "minecraft": "1.18.2"
+  }
+}
