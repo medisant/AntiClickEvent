@@ -4,7 +4,7 @@ This mod adds a warning behind chat messages which have a click event that runs 
 
 ## How do I use this mod?
 
-Simply download the latest release and put it into your mod folde like every other mod. This mod requires the Fabric API.
+Just simply download the latest release and put it into your mod folder like every other mod. This mod requires the Fabric API.
 
 ## Screenshots
 
