@@ -7,7 +7,11 @@
   "authors": [
     "medisant"
   ],
-  "contact": {},
+  "contact": {
+    "issues": "https://github.com/medisant/AntiClickEvent/issues",
+    "sources": "https://github.com/medisant/AntiClickEvent",
+    "homepage": "https://github.com/medisant/AntiClickEvent"
+  },
   "license": "MIT",
   "icon": "assets/anticlickevent/icon.png",
   "environment": "*",
@@ -17,14 +21,17 @@
     ],
     "main": [
       "me.medisant.anticlickevent.AntiClickEvent"
+    ],
+    "modmenu": [
+      "me.medisant.anticlickevent.config.ModMenuIntegration"
     ]
   },
   "mixins": [
     "anticlickevent.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.13.2",
+    "fabricloader": ">=0.14.8",
     "fabric": "*",
-    "minecraft": "1.18.2"
+    "minecraft": "1.19.2"
   }
 }

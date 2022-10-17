@@ -1,5 +1,7 @@
 package me.medisant.anticlickevent.mixin;
 
+import me.medisant.anticlickevent.config.ModConfig;
+import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.text.ClickEvent;
 import net.minecraft.text.HoverEvent;
@@ -15,8 +17,11 @@ import java.util.List;
 @Mixin(value = ChatHud.class, priority = 600)
 public class MixinChatHud {
 
-    @ModifyVariable(method = "addMessage(Lnet/minecraft/text/Text;I)V", at = @At("HEAD"), argsOnly = true)
+    @ModifyVariable(method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;Lnet/minecraft/client/gui/hud/MessageIndicator;)V", at = @At("HEAD"), argsOnly = true)
     private Text injected(Text message) {
+        ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+        if (!config.enabled) return message;
+
         MutableText newMessage = (MutableText) message;
         List<String> commands = new ArrayList<>();
 
@@ -33,7 +38,7 @@ public class MixinChatHud {
 
         if (commands.size() == 0) return message;
 
-        MutableText warning = (MutableText) Text.of(" §8[§c!§8]");
+        MutableText warning = (MutableText) Text.of(config.clickEventWarning.replaceAll("&", "§"));
         StringBuilder commandWarning = new StringBuilder();
         for (int i = 0; i < commands.size(); i++) {
             String command = commands.get(i);
