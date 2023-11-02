@@ -14,6 +14,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Mixin(value = ChatHud.class, priority = 600)
 public class MixinChatHud {
 
@@ -21,6 +22,8 @@ public class MixinChatHud {
     private Text injected(Text message) {
         ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
         if (!config.enabled) return message;
+
+
 
         MutableText newMessage = (MutableText) message;
         List<String> commands = new ArrayList<>();
@@ -36,7 +39,7 @@ public class MixinChatHud {
                     commands.add(sibling.getStyle().getClickEvent().getValue());
         }
 
-        if (commands.size() == 0) return message;
+        if (commands.isEmpty()) return message;
 
         MutableText warning = (MutableText) Text.of(config.clickEventWarning.replaceAll("&", "§"));
         StringBuilder commandWarning = new StringBuilder();
